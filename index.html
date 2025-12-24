@@ -1,37 +1,73 @@
 
         <!DOCTYPE html>
-        <html lang="en">
-        <head><meta charset="UTF-8"><title>Elite Trends Official</title><script src="https://cdn.tailwindcss.com"></script></head>
-        <body class="bg-[#020617] text-white">
-            <nav class="p-8 border-b border-slate-800 text-center"><h1 class="text-3xl font-black text-blue-500">ELITE TRENDS</h1></nav>
-            <main class="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-[#0f172a] rounded-[2.5rem] overflow-hidden border border-slate-800 shadow-2xl hover:scale-105 transition">
-                    <img src="https://ae01.alicdn.com/kf/S8f21e06d649e4860b76e105828469d44Y.jpg" class="h-56 w-full object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold">MagSafe Solar Hub</h3>
-                        <div class="mt-8 flex justify-between items-center">
-                            <span class="text-3xl font-black">$68.25</span>
-                            <a href="products/solar-hub.html" class="bg-blue-600 px-6 py-3 rounded-xl font-bold">VIEW PRODUCT</a>
-                        </div>
+        <html lang="en" class="scroll-smooth">
+        <head>
+            <meta charset="UTF-8"><title>Official Mall | Elite Trends Official</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+            <style>[x-cloak] { display: none !important; } .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); }</style>
+        </head>
+        <body class="bg-[#020617] text-white font-sans" x-data="{ cart: 0, openCart: false }">
+            <nav class="fixed w-full z-50 glass border-b border-slate-800 px-10 py-5 flex justify-between items-center">
+                <a href="index.html" class="text-3xl font-black text-blue-500 italic tracking-tighter">ELITE TRENDS</a>
+                <div class="flex items-center space-x-8">
+                    <button @click="openCart = true" class="relative text-xl">🛒 <span x-text="cart" class="absolute -top-2 -right-2 bg-blue-600 text-[10px] px-2 py-0.5 rounded-full font-bold"></span></button>
+                </div>
+            </nav>
+        
+        <header class="pt-56 pb-20 text-center px-4" x-data="{ search: '' }">
+            <h2 class="text-8xl font-black mb-8 leading-none" data-aos="fade-up">CURATED <span class="text-blue-600">VIRAL</span> TECH.</h2>
+            <div class="max-w-xl mx-auto mt-10"><input type="text" x-model="search" placeholder="Search our 2025 collection..." class="w-full bg-slate-900 border border-slate-800 p-5 rounded-2xl focus:border-blue-500 outline-none"></div>
+        </header>
+        <main class="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" x-data="{ category: 'All' }">
+            <div class="bg-[#0f172a] rounded-[3rem] border border-slate-800 overflow-hidden group hover:border-blue-500 transition-all shadow-2xl" data-aos="fade-up">
+                <img src="https://ae01.alicdn.com/kf/S8f21e06d649e4860b76e105828469d44Y.jpg" class="h-64 w-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold mb-8">MagSafe Solar Hub Pro</h3>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-4xl font-black">$70.98</span>
+                        <a href="products/solar-hub.html" class="bg-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW ITEM</a>
                     </div>
                 </div>
-                <div class="bg-[#0f172a] rounded-[2.5rem] overflow-hidden border border-slate-800 shadow-2xl hover:scale-105 transition">
-                    <img src="https://ae01.alicdn.com/kf/Sf66649f847284b159f8a3779e5192137D.jpg" class="h-56 w-full object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold">Smart AI Pet Feeder</h3>
-                        <div class="mt-8 flex justify-between items-center">
-                            <span class="text-3xl font-black">$40.97</span>
-                            <a href="products/pet-feeder.html" class="bg-blue-600 px-6 py-3 rounded-xl font-bold">VIEW PRODUCT</a>
-                        </div>
+            </div>
+            <div class="bg-[#0f172a] rounded-[3rem] border border-slate-800 overflow-hidden group hover:border-blue-500 transition-all shadow-2xl" data-aos="fade-up">
+                <img src="https://ae01.alicdn.com/kf/Sf66649f847284b159f8a3779e5192137D.jpg" class="h-64 w-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold mb-8">AI Smart Pet Feeder</h3>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-4xl font-black">$42.61</span>
+                        <a href="products/pet-feeder.html" class="bg-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW ITEM</a>
                     </div>
                 </div>
-                <div class="bg-[#0f172a] rounded-[2.5rem] overflow-hidden border border-slate-800 shadow-2xl hover:scale-105 transition">
-                    <img src="https://ae01.alicdn.com/kf/S706cad101.jpg" class="h-56 w-full object-cover">
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold">Ultra-HD Gym Projector</h3>
-                        <div class="mt-8 flex justify-between items-center">
-                            <span class="text-3xl font-black">$145.56</span>
-                            <a href="products/gym-projector.html" class="bg-blue-600 px-6 py-3 rounded-xl font-bold">VIEW PRODUCT</a>
-                        </div>
+            </div>
+            <div class="bg-[#0f172a] rounded-[3rem] border border-slate-800 overflow-hidden group hover:border-blue-500 transition-all shadow-2xl" data-aos="fade-up">
+                <img src="https://ae01.alicdn.com/kf/S706cad101.jpg" class="h-64 w-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold mb-8">Ultra-HD Gym Projector</h3>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-4xl font-black">$151.38</span>
+                        <a href="products/hd-projector.html" class="bg-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW ITEM</a>
                     </div>
-                </div></main></body></html>
+                </div>
+            </div>
+            <div class="bg-[#0f172a] rounded-[3rem] border border-slate-800 overflow-hidden group hover:border-blue-500 transition-all shadow-2xl" data-aos="fade-up">
+                <img src="https://ae01.alicdn.com/kf/S12345678.jpg" class="h-64 w-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold mb-8">Deep Sleep Bluetooth Mask</h3>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-4xl font-black">$22.56</span>
+                        <a href="products/sleep-mask.html" class="bg-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW ITEM</a>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-[#0f172a] rounded-[3rem] border border-slate-800 overflow-hidden group hover:border-blue-500 transition-all shadow-2xl" data-aos="fade-up">
+                <img src="https://ae01.alicdn.com/kf/S55443322.jpg" class="h-64 w-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold mb-8">Smart Ambient RGB Hub</h3>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-4xl font-black">$16.09</span>
+                        <a href="products/rgb-lamp.html" class="bg-blue-600 px-8 py-4 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW ITEM</a>
+                    </div>
+                </div>
+            </div></main><script src='https://unpkg.com/aos@2.3.1/dist/aos.js'></script><script>AOS.init();</script></body></html>
