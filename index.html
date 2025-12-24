@@ -1,116 +1,70 @@
 
         <!DOCTYPE html>
-        <html lang="en" class="scroll-smooth">
+        <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Elite Trends | Future Tech Today</title>
+            <title>Elite Trends | 2025 Global Collection</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
             <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-            <style>
-                [x-cloak] { display: none !important; }
-                .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(15px); }
-                .hero-gradient { background: radial-gradient(circle at center, #1e293b 0%, #020617 100%); }
-                .glow-border { transition: 0.3s; border: 1px solid rgba(59, 130, 246, 0.2); }
-                .glow-border:hover { border-color: #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
-            </style>
+            <style>[x-cloak] { display: none !important; } .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); }</style>
         </head>
-        <body class="bg-[#020617] text-slate-100 font-sans" x-data="{ open: false, activeP: {}, category: 'All' }">
-            
-            <nav class="fixed w-full z-[100] glass border-b border-slate-800 px-10 py-6 flex justify-between items-center">
-                <h1 class="text-3xl font-black text-blue-500 italic tracking-tighter">ELITE TRENDS</h1>
-                <div class="flex space-x-10 text-[10px] font-bold uppercase tracking-[0.3em]">
-                    <button @click="category = 'All'" :class="category === 'All' ? 'text-blue-400' : 'text-slate-500'">All</button>
-                    <button @click="category = 'Electronics'" :class="category === 'Electronics' ? 'text-blue-400' : 'text-slate-500'">Electronics</button>
-                    <button @click="category = 'Lifestyle'" :class="category === 'Lifestyle' ? 'text-blue-400' : 'text-slate-500'">Lifestyle</button>
+        <body class="bg-[#020617] text-white font-sans" x-data="{ open: false, activeP: {}, category: 'All' }">
+            <nav class="fixed w-full z-50 glass border-b border-slate-800 px-10 py-6 flex justify-between items-center">
+                <h1 class="text-3xl font-black text-blue-500 italic">ELITE TRENDS</h1>
+                <div class="flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                    <button @click="category = 'All'" :class="category === 'All' ? 'text-blue-400' : ''">All</button>
+                    <button @click="category = 'Electronics'" :class="category === 'Electronics' ? 'text-blue-400' : ''">Electronics</button>
+                    <button @click="category = 'Tech'" :class="category === 'Tech' ? 'text-blue-400' : ''">Tech</button>
                 </div>
             </nav>
-
-            <header class="hero-gradient min-h-screen flex flex-col justify-center items-center text-center px-6">
-                <div data-aos="zoom-out" data-aos-duration="1500">
-                    <h2 class="text-7xl md:text-9xl font-black mb-8 leading-none">VIRAL TECH.<br><span class="text-blue-600 italic">ZERO EFFORT.</span></h2>
-                    <p class="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto font-light mb-12">Hand-picked by AI. Trending globally in 2025.</p>
-                    <a href="#store" class="bg-blue-600 px-12 py-5 rounded-full font-black text-lg hover:scale-110 transition shadow-2xl shadow-blue-500/20">EXPLORE COLLECTION</a>
-                </div>
+            <header class="pt-48 pb-20 text-center">
+                <h2 class="text-7xl font-black mb-4" data-aos="zoom-in">VIRAL PRODUCTS.<br><span class="text-blue-600">ZERO EFFORT.</span></h2>
             </header>
-
-            <section id="store" class="max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 md:grid-cols-3 gap-12">
-        
-                <div class="glow-border bg-[#0f172a] rounded-[3rem] p-10 flex flex-col justify-between" 
+            <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
                      x-show="category === 'All' || category === 'Electronics'" data-aos="fade-up">
-                    <div>
-                        <div class="flex justify-between items-center mb-10">
-                            <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-4 py-1.5 rounded-full">Electronics</span>
-                            <span class="text-yellow-500 text-xs font-bold">★★★★★</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4 tracking-tight">MagSafe Solar Hub</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-10 line-clamp-3">Military-grade 50,000mAh power bank. Features advanced magnetic solar cells for the ultimate off-grid experience. Compatible with iPhone 15/16 and all USB-C devices.</p>
-                    </div>
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Electronics</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-6">MagSafe Solar Hub</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
-                        <span class="text-4xl font-black">$60.06</span>
-                        <button @click="open = true; activeP = {name:'MagSafe Solar Hub', price:'60.06', desc:'Military-grade 50,000mAh power bank. Features advanced magnetic solar cells for the ultimate off-grid experience. Compatible with iPhone 15/16 and all USB-C devices.', cat:'Electronics'}" 
-                                class="bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-blue-600 hover:text-white transition-all">VIEW</button>
+                        <span class="text-4xl font-black text-white">$68.25</span>
+                        <button @click="open = true; activeP = {name:'MagSafe Solar Hub', price:'68.25', desc:'Professional grade MagSafe Solar Hub with global shipping and 2025 technology features.', cat:'Electronics'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
                     </div>
                 </div>
-                <div class="glow-border bg-[#0f172a] rounded-[3rem] p-10 flex flex-col justify-between" 
+                <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
                      x-show="category === 'All' || category === 'Lifestyle'" data-aos="fade-up">
-                    <div>
-                        <div class="flex justify-between items-center mb-10">
-                            <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-4 py-1.5 rounded-full">Lifestyle</span>
-                            <span class="text-yellow-500 text-xs font-bold">★★★★</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4 tracking-tight">Smart AI Pet Feeder</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-10 line-clamp-3">Keep your pets loved even when you're away. Featuring 4K camera monitoring, two-way audio, and AI-driven portion control directly from your smartphone.</p>
-                    </div>
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Lifestyle</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-6">Smart AI Pet Feeder</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
-                        <span class="text-4xl font-black">$36.06</span>
-                        <button @click="open = true; activeP = {name:'Smart AI Pet Feeder', price:'36.06', desc:'Keep your pets loved even when you're away. Featuring 4K camera monitoring, two-way audio, and AI-driven portion control directly from your smartphone.', cat:'Lifestyle'}" 
-                                class="bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-blue-600 hover:text-white transition-all">VIEW</button>
+                        <span class="text-4xl font-black text-white">$40.97</span>
+                        <button @click="open = true; activeP = {name:'Smart AI Pet Feeder', price:'40.97', desc:'Professional grade Smart AI Pet Feeder with global shipping and 2025 technology features.', cat:'Lifestyle'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
                     </div>
                 </div>
-                <div class="glow-border bg-[#0f172a] rounded-[3rem] p-10 flex flex-col justify-between" 
+                <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
                      x-show="category === 'All' || category === 'Tech'" data-aos="fade-up">
-                    <div>
-                        <div class="flex justify-between items-center mb-10">
-                            <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-4 py-1.5 rounded-full">Tech</span>
-                            <span class="text-yellow-500 text-xs font-bold">★★★★★</span>
-                        </div>
-                        <h3 class="text-3xl font-bold mb-4 tracking-tight">Ultra-HD Gym Projector</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-10 line-clamp-3">Turn any wall into a 200-inch 4K theater. Wi-Fi 6 enabled for seamless streaming. The perfect companion for home gym workouts and cinematic nights.</p>
-                    </div>
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Tech</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-6">Ultra-HD Gym Projector</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
-                        <span class="text-4xl font-black">$128.09</span>
-                        <button @click="open = true; activeP = {name:'Ultra-HD Gym Projector', price:'128.09', desc:'Turn any wall into a 200-inch 4K theater. Wi-Fi 6 enabled for seamless streaming. The perfect companion for home gym workouts and cinematic nights.', cat:'Tech'}" 
-                                class="bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-blue-600 hover:text-white transition-all">VIEW</button>
+                        <span class="text-4xl font-black text-white">$145.56</span>
+                        <button @click="open = true; activeP = {name:'Ultra-HD Gym Projector', price:'145.56', desc:'Professional grade Ultra-HD Gym Projector with global shipping and 2025 technology features.', cat:'Tech'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
                     </div>
                 </div>
-            </section>
-
-            <div x-show="open" x-cloak class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md">
-                <div class="bg-[#0f172a] max-w-3xl w-full rounded-[4rem] p-16 border border-slate-700 relative shadow-2xl" @click.away="open = false">
-                    <button @click="open = false" class="absolute top-10 right-10 text-slate-500 hover:text-white text-4xl">&times;</button>
-                    <span class="text-blue-500 text-xs font-black uppercase tracking-widest" x-text="activeP.cat"></span>
+            </main>
+            <div x-show="open" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/95 backdrop-blur-md">
+                <div class="bg-[#0f172a] max-w-2xl w-full rounded-[4rem] p-16 border border-slate-700 relative shadow-2xl" @click.away="open = false">
+                    <button @click="open = false" class="absolute top-10 right-10 text-slate-500 text-4xl">&times;</button>
+                    <span class="text-blue-500 text-xs font-black uppercase" x-text="activeP.cat"></span>
                     <h2 class="text-6xl font-black mt-4 mb-8 leading-tight" x-text="activeP.name"></h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12" x-text="activeP.desc"></p>
-                    
-                    <div class="bg-blue-600/10 p-6 rounded-3xl border border-blue-600/30 mb-12">
-                        <p class="text-blue-400 font-bold">⚡ FLASH DEAL: Limited 2025 stock available for global shipping.</p>
-                    </div>
-
                     <div class="flex justify-between items-center">
                         <span class="text-6xl font-black" x-text="'$' + activeP.price"></span>
-                        <button class="bg-blue-600 text-white px-12 py-6 rounded-[2rem] font-black text-2xl hover:bg-blue-500 shadow-xl shadow-blue-500/20">SECURE CHECKOUT</button>
+                        <button class="bg-white text-black px-12 py-5 rounded-[2rem] font-black text-xl hover:bg-blue-600 hover:text-white transition">BUY NOW</button>
                     </div>
                 </div>
             </div>
-
-            <footer class="py-20 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.5em]">
-                &copy; 2025 ELITE TRENDS GLOBAL. ALL RIGHTS RESERVED.
-            </footer>
-
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script>AOS.init({ duration: 1000, once: true });</script>
-        </body>
-        </html>
-        
+        </body></html>
