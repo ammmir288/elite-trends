@@ -2,93 +2,60 @@
         <!DOCTYPE html>
         <html lang="en">
         <head>
-            <meta charset="UTF-8">
-            <title>ELITE TRENDS | Official Store</title>
+            <meta charset="UTF-8"><title>Elite Trends | Official</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         </head>
-        <body class="bg-[#020617] text-white" x-data="{ openModal: false, activeProduct: {} }">
-            
-            <nav class="p-6 border-b border-slate-800 flex justify-between items-center bg-[#0f172a]/80 backdrop-blur-md fixed w-full z-50">
+        <body class="bg-[#020617] text-white font-sans" x-data="{ open: false, p: {} }">
+            <nav class="p-6 border-b border-slate-800 flex justify-between bg-[#0f172a] fixed w-full z-50">
                 <h1 class="text-2xl font-black text-blue-500 italic">ELITE TRENDS</h1>
-                <div class="flex space-x-4">
-                    <span class="text-[10px] bg-red-500 px-2 py-1 rounded-full animate-pulse">LIVE DEALS</span>
-                </div>
+                <div class="text-xs font-bold text-slate-500 uppercase">2025 Collection</div>
             </nav>
 
-            <header class="pt-40 pb-20 text-center px-6">
-                <h2 class="text-6xl font-black mb-4" data-aos="fade-down">Future Tech, <span class="text-blue-500">Today.</span></h2>
-                <p class="text-slate-400">Exclusive viral products curated for the elite.</p>
-            </header>
-
-            <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
+            <main class="max-w-7xl mx-auto px-6 pt-40 pb-20 grid grid-cols-1 md:grid-cols-3 gap-10">
         
-                <div class="bg-[#0f172a] rounded-[2rem] p-8 border border-slate-800 hover:border-blue-500 transition-all group" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-bold uppercase">Electronics</span>
-                    <h3 class="text-2xl font-bold mt-2">MagSafe Solar Hub</h3>
-                    <p class="text-slate-500 text-sm mt-4 line-clamp-2">The most powerful solar bank for 2025. Features magnetic alignment, 50,000mAh capacity, and military-grade durability.</p>
+                <div class="bg-[#0f172a] rounded-[2.5rem] p-8 border border-slate-800 shadow-2xl">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Electronics</span>
+                    <h3 class="text-2xl font-bold mt-4">MagSafe Solar Hub</h3>
                     <div class="mt-8 flex justify-between items-center">
-                        <span class="text-3xl font-black">$49.99</span>
-                        <button @click="openModal = true; activeProduct = { name: 'MagSafe Solar Hub', price: '49.99', desc: 'The most powerful solar bank for 2025. Features magnetic alignment, 50,000mAh capacity, and military-grade durability.', category: 'Electronics' }" 
-                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">
-                            VIEW DETAILS
-                        </button>
+                        <span class="text-3xl font-black">$68.25</span>
+                        <button @click="open = true; p = {name:'MagSafe Solar Hub', price:'68.25', desc:'Engineered for the modern explorer. This 50,000mAh monster uses military-grade solar cells to keep your devices alive in the wildest conditions. Features magnetic MagSafe alignment for seamless charging.', cat:'Electronics'}" 
+                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">VIEW PRODUCT</button>
                     </div>
                 </div>
-                <div class="bg-[#0f172a] rounded-[2rem] p-8 border border-slate-800 hover:border-blue-500 transition-all group" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-bold uppercase">Lifestyle</span>
-                    <h3 class="text-2xl font-bold mt-2">Smart AI Pet Feeder</h3>
-                    <p class="text-slate-500 text-sm mt-4 line-clamp-2">Keep your pets healthy and happy. Smart AI schedules, 4K camera monitoring, and instant alerts to your phone.</p>
+                <div class="bg-[#0f172a] rounded-[2.5rem] p-8 border border-slate-800 shadow-2xl">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Lifestyle</span>
+                    <h3 class="text-2xl font-bold mt-4">Smart AI Pet Feeder</h3>
                     <div class="mt-8 flex justify-between items-center">
-                        <span class="text-3xl font-black">$89.0</span>
-                        <button @click="openModal = true; activeProduct = { name: 'Smart AI Pet Feeder', price: '89.0', desc: 'Keep your pets healthy and happy. Smart AI schedules, 4K camera monitoring, and instant alerts to your phone.', category: 'Lifestyle' }" 
-                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">
-                            VIEW DETAILS
-                        </button>
+                        <span class="text-3xl font-black">$40.97</span>
+                        <button @click="open = true; p = {name:'Smart AI Pet Feeder', price:'40.97', desc:'Never worry about your pet again. Our AI-driven feeder ensures precise nutrition with smartphone scheduling, a 4K wide-angle camera, and two-way audio to talk to your best friend from anywhere.', cat:'Lifestyle'}" 
+                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">VIEW PRODUCT</button>
                     </div>
                 </div>
-                <div class="bg-[#0f172a] rounded-[2rem] p-8 border border-slate-800 hover:border-blue-500 transition-all group" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-bold uppercase">Tech</span>
-                    <h3 class="text-2xl font-bold mt-2">Ultra-HD Gym Projector</h3>
-                    <p class="text-slate-500 text-sm mt-4 line-clamp-2">Experience true 4K cinema anywhere. Ultra-portable, Wi-Fi 6 enabled, and connects directly to your favorite streaming apps.</p>
+                <div class="bg-[#0f172a] rounded-[2.5rem] p-8 border border-slate-800 shadow-2xl">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Tech</span>
+                    <h3 class="text-2xl font-bold mt-4">Ultra-HD Gym Projector</h3>
                     <div class="mt-8 flex justify-between items-center">
-                        <span class="text-3xl font-black">$120.5</span>
-                        <button @click="openModal = true; activeProduct = { name: 'Ultra-HD Gym Projector', price: '120.5', desc: 'Experience true 4K cinema anywhere. Ultra-portable, Wi-Fi 6 enabled, and connects directly to your favorite streaming apps.', category: 'Tech' }" 
-                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">
-                            VIEW DETAILS
-                        </button>
+                        <span class="text-3xl font-black">$145.56</span>
+                        <button @click="open = true; p = {name:'Ultra-HD Gym Projector', price:'145.56', desc:'Transform any space into a high-end cinema. Native 4K resolution, Wi-Fi 6 connectivity, and 360-degree immersive sound. Perfect for movies, gaming, and professional presentations.', cat:'Tech'}" 
+                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">VIEW PRODUCT</button>
                     </div>
                 </div>
             </main>
 
-            <div x-show="openModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-sm" x-cloak>
-                <div class="bg-[#0f172a] max-w-2xl w-full rounded-[3rem] p-12 border border-slate-700 relative shadow-2xl" @click.away="openModal = false">
-                    <button @click="openModal = false" class="absolute top-8 right-8 text-slate-500 hover:text-white text-2xl">&times;</button>
-                    
-                    <span class="text-blue-400 text-xs font-black uppercase tracking-widest" x-text="activeProduct.category"></span>
-                    <h2 class="text-5xl font-black mt-4 mb-6" x-text="activeProduct.name"></h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-10" x-text="activeProduct.desc"></p>
-                    
-                    <div class="bg-blue-900/20 p-6 rounded-2xl border border-blue-500/30 mb-10">
-                        <p class="text-blue-400 text-sm font-bold">⚡ LIMITED STOCK: Only 4 units left in our US warehouse!</p>
-                    </div>
-
-                    <div class="flex justify-between items-center">
-                        <span class="text-5xl font-black" x-text="'$' + activeProduct.price"></span>
-                        <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-500 hover:text-white transition-all">
-                            PROCEED TO SECURE CHECKOUT
-                        </button>
+            <div x-show="open" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-md" x-cloak>
+                <div class="bg-[#0f172a] max-w-2xl w-full rounded-[3rem] p-12 border border-slate-700 relative shadow-2xl" @click.away="open = false">
+                    <button @click="open = false" class="absolute top-8 right-8 text-slate-500 text-3xl">&times;</button>
+                    <span class="text-blue-400 text-xs font-black uppercase" x-text="p.cat"></span>
+                    <h2 class="text-5xl font-black mt-4 mb-6" x-text="p.name"></h2>
+                    <div class="h-1 w-20 bg-blue-600 mb-8"></div>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-10" x-text="p.desc"></p>
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-8">
+                        <span class="text-5xl font-black" x-text="'$' + p.price"></span>
+                        <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-400 hover:text-white transition-all">ADD TO CART</button>
                     </div>
                 </div>
             </div>
-
-            <footer class="py-20 text-center text-slate-700 text-[10px] font-bold uppercase tracking-widest">
-                &copy; 2025 ELITE TRENDS GLOBAL. ALL RIGHTS RESERVED.
-            </footer>
-
-            <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-            <script>AOS.init();</script>
         </body>
         </html>
         
