@@ -10,7 +10,7 @@ class GlobalEmpire:
         self.path = os.path.expanduser("~/hacker_dropship")
 
     def generate_site(self, products):
-        # יצירת ה-HTML המודרני שאהבת (Dark Mode)
+        # יצירת ה-HTML המקצועי שראינו ב-image_707f35.png
         html = f"""
         <!DOCTYPE html>
         <html lang="en">
@@ -42,20 +42,24 @@ class GlobalEmpire:
         with open(f"{self.path}/index.html", "w") as f: f.write(html)
 
     def deploy(self):
-        # פקודה האקרית להעלאה אוטומטית ללא צורך בהתערבותך
         try:
             os.chdir(self.path)
+            # בדיקה אם יש שינויים לפני ביצוע Commit
+            status = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True).stdout
+            if not status:
+                print("ℹ️ אין שינויים חדשים באתר. מדלג על העלאה.")
+                return True
+                
             subprocess.run(["git", "add", "."], check=True)
             subprocess.run(["git", "commit", "-m", "Auto-update products"], check=True)
             subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
             return True
         except Exception as e:
-            print(f"Deployment error: {e}")
+            print(f"Deployment info: {e}")
             return False
 
     def run(self):
         print("👿 המפלצת סורקת, בונה ומעלה את האתר שלך...")
-        # כאן הבוט מוצא את המוצרים שראינו ב-AliExpress ומחשב מחיר בדולרים
         winners = [
             {"name": "MagSafe Solar Hub", "price": 49.99, "category": "Electronics", "desc": "High-capacity solar power bank for mobile devices."},
             {"name": "4K Mini Smart Projector", "price": 120.50, "category": "Tech", "desc": "Transform your room into a high-end cinema."},
@@ -63,8 +67,9 @@ class GlobalEmpire:
         ]
         self.generate_site(winners)
         if self.deploy():
+            print("🚀 האתר מעודכן בשידור חי!")
             requests.post(f"https://api.telegram.org/bot{self.token}/sendMessage", 
-                         json={"chat_id": self.chat_id, "text": "🚀 *EMPIRE UPDATE*: Your site is now LIVE and updated automatically!"})
+                         json={"chat_id": self.chat_id, "text": "✅ *SITE STATUS*: Your store is up to date and live on GitHub!"})
 
 if __name__ == "__main__":
     TOKEN = "8360823180:AAFUG7AhmzCl_6h1G_20oRgcWL8YbQ67r84"
