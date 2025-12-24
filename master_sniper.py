@@ -1,90 +1,82 @@
 import requests, os, subprocess, time
 
-class BrandBuilder:
+class InteractiveBrand:
     def __init__(self, token, chat_id):
         self.token, self.chat_id = token, chat_id
         self.path = os.path.expanduser("~/hacker_dropship")
 
-    def generate_full_site(self, products):
+    def generate_interactive_site(self, products):
         html = f"""
         <!DOCTYPE html>
-        <html lang="en" class="scroll-smooth">
+        <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>ELITE TRENDS | Premium Global Tech</title>
+            <title>ELITE TRENDS | Official Store</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
             <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-            <style>
-                .glass {{ background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); }}
-                .product-card {{ transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }}
-            </style>
         </head>
-        <body class="bg-[#020617] text-slate-200" x-data="{{ activeTab: 'All' }}">
-            <nav class="fixed w-full z-50 glass border-b border-slate-800 px-8 py-5 flex justify-between items-center">
-                <h1 class="text-3xl font-black tracking-tighter text-blue-500 italic">ELITE TRENDS</h1>
-                <div class="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    <button @click="activeTab = 'All'" :class="activeTab === 'All' ? 'text-blue-400' : 'hover:text-blue-400'">Home</button>
-                    <button @click="activeTab = 'Electronics'" :class="activeTab === 'Electronics' ? 'text-blue-400' : 'hover:text-blue-400'">Electronics</button>
-                    <button @click="activeTab = 'Lifestyle'" :class="activeTab === 'Lifestyle' ? 'text-blue-400' : 'hover:text-blue-400'">Lifestyle</button>
+        <body class="bg-[#020617] text-white" x-data="{{ openModal: false, activeProduct: {{}} }}">
+            
+            <nav class="p-6 border-b border-slate-800 flex justify-between items-center bg-[#0f172a]/80 backdrop-blur-md fixed w-full z-50">
+                <h1 class="text-2xl font-black text-blue-500 italic">ELITE TRENDS</h1>
+                <div class="flex space-x-4">
+                    <span class="text-[10px] bg-red-500 px-2 py-1 rounded-full animate-pulse">LIVE DEALS</span>
                 </div>
             </nav>
 
             <header class="pt-40 pb-20 text-center px-6">
-                <div data-aos="zoom-out" data-aos-duration="1500">
-                    <h2 class="text-7xl md:text-8xl font-black mb-6 tracking-tight">THE <span class="text-blue-600 italic">NEW</span> STANDARD.</h2>
-                    <p class="text-slate-400 text-xl max-w-2xl mx-auto font-light leading-relaxed">Curating the world's most innovative gadgets with uncompromising quality.</p>
-                </div>
+                <h2 class="text-6xl font-black mb-4" data-aos="fade-down">Future Tech, <span class="text-blue-500">Today.</span></h2>
+                <p class="text-slate-400">Exclusive viral products curated for the elite.</p>
             </header>
 
-            <section class="max-w-7xl mx-auto px-6 py-20">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
         """
         for p in products:
             html += f"""
-                    <div class="product-card group" x-show="activeTab === 'All' || activeTab === '{p['category']}'" data-aos="fade-up">
-                        <div class="relative bg-[#0f172a] rounded-[2.5rem] p-10 border border-slate-800 overflow-hidden group-hover:border-blue-500/50 group-hover:shadow-[0_0_50px_-12px_rgba(59,130,246,0.3)]">
-                            <div class="flex justify-between items-start mb-10">
-                                <span class="bg-blue-500/10 text-blue-400 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">{p['category']}</span>
-                                <span class="text-slate-600 text-[10px] font-bold">MODEL_2025</span>
-                            </div>
-                            <h3 class="text-3xl font-bold mb-4 tracking-tight group-hover:text-white transition">{p['name']}</h3>
-                            <p class="text-slate-400 text-sm leading-relaxed mb-10">{p['desc']}</p>
-                            <div class="flex justify-between items-center border-t border-slate-800/50 pt-8">
-                                <span class="text-4xl font-black text-white">${p['price']}</span>
-                                <button class="bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-blue-500 hover:text-white transition-all transform active:scale-95">ORDER NOW</button>
-                            </div>
-                        </div>
-                    </div>"""
+                <div class="bg-[#0f172a] rounded-[2rem] p-8 border border-slate-800 hover:border-blue-500 transition-all group" data-aos="fade-up">
+                    <span class="text-blue-400 text-[10px] font-bold uppercase">{p['category']}</span>
+                    <h3 class="text-2xl font-bold mt-2">{p['name']}</h3>
+                    <p class="text-slate-500 text-sm mt-4 line-clamp-2">{p['desc']}</p>
+                    <div class="mt-8 flex justify-between items-center">
+                        <span class="text-3xl font-black">${p['price']}</span>
+                        <button @click="openModal = true; activeProduct = {{ name: '{p['name']}', price: '{p['price']}', desc: '{p['desc']}', category: '{p['category']}' }}" 
+                                class="bg-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-500 transition">
+                            VIEW DETAILS
+                        </button>
+                    </div>
+                </div>"""
         
         html += """
-                </div>
-            </section>
+            </main>
 
-            <section class="bg-[#0f172a] py-24 border-y border-slate-800 px-6">
-                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
-                    <div data-aos="fade-up">
-                        <h4 class="text-blue-400 font-black mb-4">GLOBAL SHIPPING</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Strategic warehouses in the US, Europe, and Asia for 7-14 day delivery.</p>
+            <div x-show="openModal" class="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-black/90 backdrop-blur-sm" x-cloak>
+                <div class="bg-[#0f172a] max-w-2xl w-full rounded-[3rem] p-12 border border-slate-700 relative shadow-2xl" @click.away="openModal = false">
+                    <button @click="openModal = false" class="absolute top-8 right-8 text-slate-500 hover:text-white text-2xl">&times;</button>
+                    
+                    <span class="text-blue-400 text-xs font-black uppercase tracking-widest" x-text="activeProduct.category"></span>
+                    <h2 class="text-5xl font-black mt-4 mb-6" x-text="activeProduct.name"></h2>
+                    <p class="text-slate-400 text-lg leading-relaxed mb-10" x-text="activeProduct.desc"></p>
+                    
+                    <div class="bg-blue-900/20 p-6 rounded-2xl border border-blue-500/30 mb-10">
+                        <p class="text-blue-400 text-sm font-bold">⚡ LIMITED STOCK: Only 4 units left in our US warehouse!</p>
                     </div>
-                    <div data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="text-blue-400 font-black mb-4">SECURE PAYMENTS</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Bank-grade 256-bit encryption for every transaction.</p>
-                    </div>
-                    <div data-aos="fade-up" data-aos-delay="400">
-                        <h4 class="text-blue-400 font-black mb-4">24/7 SUPPORT</h4>
-                        <p class="text-slate-400 text-sm leading-relaxed">Our dedicated concierge team is always here for your tech needs.</p>
+
+                    <div class="flex justify-between items-center">
+                        <span class="text-5xl font-black" x-text="'$' + activeProduct.price"></span>
+                        <button class="bg-white text-black px-12 py-5 rounded-2xl font-black text-xl hover:bg-blue-500 hover:text-white transition-all">
+                            PROCEED TO SECURE CHECKOUT
+                        </button>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <footer class="py-12 text-center text-slate-600 text-[10px] uppercase font-bold tracking-[0.3em]">
-                &copy; 2025 ELITE TRENDS GLOBAL. POWERED BY SALES MONSTER AI.
+            <footer class="py-20 text-center text-slate-700 text-[10px] font-bold uppercase tracking-widest">
+                &copy; 2025 ELITE TRENDS GLOBAL. ALL RIGHTS RESERVED.
             </footer>
 
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-            <script>AOS.init({ duration: 1000, once: true });</script>
+            <script>AOS.init();</script>
         </body>
         </html>
         """
@@ -94,22 +86,21 @@ class BrandBuilder:
         try:
             os.chdir(self.path)
             subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", "Brand Identity Launch: Full Website Structure"], check=True)
+            subprocess.run(["git", "commit", "-m", "Interactive Modal Update"], check=True)
             subprocess.run(["git", "push", "-u", "origin", "main"], check=True)
             return True
         except: return False
 
     def run(self):
-        print("👿 בונה את המותג הבינלאומי שלך (Elite Trends Brand Upgrade)...")
-        # מוצרים המבוססים על החיפושים האמיתיים שלך
+        print("👿 הופך את האתר לאינטראקטיבי (Adding Product Modals)...")
         winners = [
-            {"name": "MagSafe Solar Hub", "price": 49.99, "category": "Electronics", "desc": "High-capacity 50,000mAh portable charger with magnetic solar cells. Built for extreme conditions."},
-            {"name": "Smart AI Pet Feeder", "price": 89.00, "category": "Lifestyle", "desc": "Automated dietary control with integrated 4K camera and two-way audio. Keep them loved while you're away."},
-            {"name": "Ultra-HD Gym Projector", "price": 120.50, "category": "Electronics", "desc": "Native 4K cinematic experience in a pocket-sized form factor. Wi-Fi 6 enabled for zero-lag streaming."}
+            {"name": "MagSafe Solar Hub", "price": 49.99, "category": "Electronics", "desc": "The most powerful solar bank for 2025. Features magnetic alignment, 50,000mAh capacity, and military-grade durability."},
+            {"name": "Smart AI Pet Feeder", "price": 89.00, "category": "Lifestyle", "desc": "Keep your pets healthy and happy. Smart AI schedules, 4K camera monitoring, and instant alerts to your phone."},
+            {"name": "Ultra-HD Gym Projector", "price": 120.50, "category": "Tech", "desc": "Experience true 4K cinema anywhere. Ultra-portable, Wi-Fi 6 enabled, and connects directly to your favorite streaming apps."}
         ]
-        self.generate_full_site(winners)
+        self.generate_interactive_site(winners)
         if self.deploy():
-            print("🚀 האתר שודרג למותג מלא! המתן 60 שניות לעדכון בגיטהאב.")
+            print("🚀 האתר שודרג! עכשיו כשלוחצים על מוצר נפתח עולם שלם.")
 
 if __name__ == "__main__":
-    BrandBuilder("8360823180:AAFUG7AhmzCl_6h1G_20oRgcWL8YbQ67r84", "5257373536").run()
+    InteractiveBrand("8360823180:AAFUG7AhmzCl_6h1G_20oRgcWL8YbQ67r84", "5257373536").run()
