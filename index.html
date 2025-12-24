@@ -2,54 +2,53 @@
         <!DOCTYPE html>
         <html lang="en">
         <head>
-            <meta charset="UTF-8">
-            <title>Elite Trends | 2025 Global Collection</title>
+            <meta charset="UTF-8"><title>Elite Trends | Premium Store</title>
             <script src="https://cdn.tailwindcss.com"></script>
             <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
             <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-            <style>[x-cloak] { display: none !important; } .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); }</style>
+            <style>[x-cloak] { display: none !important; } .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(15px); }</style>
         </head>
-        <body class="bg-[#020617] text-white font-sans" x-data="{ open: false, activeP: {}, category: 'All' }">
+        <body class="bg-[#020617] text-white font-sans" x-data="{ open: false, activeP: {}, cat: 'All' }">
             <nav class="fixed w-full z-50 glass border-b border-slate-800 px-10 py-6 flex justify-between items-center">
                 <h1 class="text-3xl font-black text-blue-500 italic">ELITE TRENDS</h1>
-                <div class="flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                    <button @click="category = 'All'" :class="category === 'All' ? 'text-blue-400' : ''">All</button>
-                    <button @click="category = 'Electronics'" :class="category === 'Electronics' ? 'text-blue-400' : ''">Electronics</button>
-                    <button @click="category = 'Tech'" :class="category === 'Tech' ? 'text-blue-400' : ''">Tech</button>
+                <div class="flex space-x-8 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                    <button @click="cat = 'All'" :class="cat === 'All' ? 'text-blue-400' : ''">All</button>
+                    <button @click="cat = 'Electronics'" :class="cat === 'Electronics' ? 'text-blue-400' : ''">Electronics</button>
+                    <button @click="cat = 'Tech'" :class="cat === 'Tech' ? 'text-blue-400' : ''">Tech</button>
                 </div>
             </nav>
-            <header class="pt-48 pb-20 text-center">
-                <h2 class="text-7xl font-black mb-4" data-aos="zoom-in">VIRAL PRODUCTS.<br><span class="text-blue-600">ZERO EFFORT.</span></h2>
+            <header class="pt-48 pb-10 text-center">
+                <h2 class="text-7xl font-black mb-4" data-aos="zoom-in">VIRAL TECH.<br><span class="text-blue-600">ZERO EFFORT.</span></h2>
             </header>
             <main class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
-                     x-show="category === 'All' || category === 'Electronics'" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Electronics</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-6">MagSafe Solar Hub</h3>
+                     x-show="cat === 'All' || cat === 'Electronics'" data-aos="fade-up">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full">Electronics</span>
+                    <h3 class="text-2xl font-bold mt-6 mb-8">MagSafe Solar Hub</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
                         <span class="text-4xl font-black text-white">$68.25</span>
-                        <button @click="open = true; activeP = {name:'MagSafe Solar Hub', price:'68.25', desc:'Professional grade MagSafe Solar Hub with global shipping and 2025 technology features.', cat:'Electronics'}" 
-                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
+                        <button @click="open = true; activeP = {name:'MagSafe Solar Hub', price:'68.25', desc:'Military-grade MagSafe Solar Hub designed for 2025. Featuring advanced automation and global durability standards.', cat:'Electronics'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW</button>
                     </div>
                 </div>
                 <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
-                     x-show="category === 'All' || category === 'Lifestyle'" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Lifestyle</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-6">Smart AI Pet Feeder</h3>
+                     x-show="cat === 'All' || cat === 'Lifestyle'" data-aos="fade-up">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full">Lifestyle</span>
+                    <h3 class="text-2xl font-bold mt-6 mb-8">Smart AI Pet Feeder</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
                         <span class="text-4xl font-black text-white">$40.97</span>
-                        <button @click="open = true; activeP = {name:'Smart AI Pet Feeder', price:'40.97', desc:'Professional grade Smart AI Pet Feeder with global shipping and 2025 technology features.', cat:'Lifestyle'}" 
-                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
+                        <button @click="open = true; activeP = {name:'Smart AI Pet Feeder', price:'40.97', desc:'Military-grade Smart AI Pet Feeder designed for 2025. Featuring advanced automation and global durability standards.', cat:'Lifestyle'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW</button>
                     </div>
                 </div>
                 <div class="bg-[#0f172a] rounded-[3rem] p-10 border border-slate-800 hover:border-blue-500 transition-all shadow-2xl" 
-                     x-show="category === 'All' || category === 'Tech'" data-aos="fade-up">
-                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest">Tech</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-6">Ultra-HD Gym Projector</h3>
+                     x-show="cat === 'All' || cat === 'Tech'" data-aos="fade-up">
+                    <span class="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full">Tech</span>
+                    <h3 class="text-2xl font-bold mt-6 mb-8">Ultra-HD Gym Projector</h3>
                     <div class="flex justify-between items-center border-t border-slate-800 pt-8">
                         <span class="text-4xl font-black text-white">$145.56</span>
-                        <button @click="open = true; activeP = {name:'Ultra-HD Gym Projector', price:'145.56', desc:'Professional grade Ultra-HD Gym Projector with global shipping and 2025 technology features.', cat:'Tech'}" 
-                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500">VIEW</button>
+                        <button @click="open = true; activeP = {name:'Ultra-HD Gym Projector', price:'145.56', desc:'Military-grade Ultra-HD Gym Projector designed for 2025. Featuring advanced automation and global durability standards.', cat:'Tech'}" 
+                                class="bg-blue-600 px-8 py-3 rounded-2xl font-bold hover:bg-blue-500 transition">VIEW</button>
                     </div>
                 </div>
             </main>
@@ -59,7 +58,7 @@
                     <span class="text-blue-500 text-xs font-black uppercase" x-text="activeP.cat"></span>
                     <h2 class="text-6xl font-black mt-4 mb-8 leading-tight" x-text="activeP.name"></h2>
                     <p class="text-slate-400 text-xl leading-relaxed mb-12" x-text="activeP.desc"></p>
-                    <div class="flex justify-between items-center">
+                    <div class="flex justify-between items-center border-t border-slate-800 pt-10">
                         <span class="text-6xl font-black" x-text="'$' + activeP.price"></span>
                         <button class="bg-white text-black px-12 py-5 rounded-[2rem] font-black text-xl hover:bg-blue-600 hover:text-white transition">BUY NOW</button>
                     </div>
